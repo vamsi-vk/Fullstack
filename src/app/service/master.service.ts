@@ -39,24 +39,19 @@ search(key:any):Observable<any>{
   }
 
   deletecourse(data: any) {
-    console.log("service " + data);
-    console.log(localStorage.getItem('data'))
     return this.http.delete(`http://localhost:3000/course/deletecourse/${data}`);
   }
   
 
   Savecustomer(data:any){
-    console.log(data)
     return this.http.patch(`http://localhost:3000/course/updatecourse/${data.id}`,data);
   }
   addcourse(data:any){
-    console.log(data)
     return this.http.post(`http://localhost:3000/course/addcourse/`,data);
   }
 
 
   GetCustomerbycode(code:any){
-    console.log("vamsi"+code)
     return this.http.get(`http://localhost:3000/course/${code}`);
   }
 
@@ -64,7 +59,7 @@ search(key:any):Observable<any>{
   register(data:any){
     console.log(data)
     return this.http.post('http://localhost:3000/auth/signup/',data);
-    
+
   }
 
   GetAssociate(){

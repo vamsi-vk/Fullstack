@@ -1,12 +1,20 @@
-
-<div mat-dialog-content>
-  <ng-container *ngIf="custdata">
-    <h2>Course ID: <b>{{ custdata.id }}</b></h2>
-    <h2>Title: <b>{{ custdata.title }}</b></h2>
-    <h2>Available: <b>{{ custdata.completed ? "Yes" : "No" }}</b></h2>
+<div mat-dialog-content *ngIf="dataLoaded" class="dialog-content">
+  <ng-container *ngIf="custdata && custdata.length > 0">
+    <h2 class="section-title">User Details</h2>
+    <div class="detail-row">
+      <span class="label">Course ID:</span>
+      <span class="value">{{ custdata[0].id }}</span>
+    </div>
+    <div class="detail-row">
+      <span class="label">Title:</span>
+      <span class="value">{{ custdata[0].title }}</span>
+    </div>
+    <div class="detail-row">
+      <span class="label">Available:</span>
+      <span class="value">{{ custdata[0].completed ? "Yes" : "No" }}</span>
+    </div>
   </ng-container>
-  <div mat-dialog-actions>
+  <div class="button-row">
     <button (click)="closepopup()" mat-raised-button color="warn">Close</button>
   </div>
 </div>
-
