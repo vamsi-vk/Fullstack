@@ -1,0 +1,44 @@
+<form [formGroup]="editForm" (ngSubmit)="save()">
+  <h1 mat-dialog-title>EDIT</h1>
+  <div mat-dialog-content>
+     <mat-form-field >
+      <mat-label>ID</mat-label>
+      <input formControlName="id" matInput>
+     </mat-form-field>
+     <mat-form-field>
+      <mat-label>COURSE</mat-label>
+      <input matInput formControlName="title">
+     </mat-form-field>
+     <mat-form-field>
+      <mat-label>STATUS</mat-label>
+      <input matInput formControlName="completed">
+     </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+      <button mat-raised-button type="submit" color="primary">Save</button>
+    <a (click)="close()" mat-raised-button color="warn">Close</a>
+    <!-- <button mat-raised-button [mat-dialog-close]="closemessage" color="accent">Cancel</button> -->
+  </div>
+  <!-- </form>
+<form [formGroup]="editForm" (ngSubmit)="save()">
+  <h1 mat-dialog-title>EDIT</h1>
+  <div mat-dialog-content>
+     <mat-form-field>
+      <mat-label>ID</mat-label>
+      <input formControlName="id" matInput [disabled]="true">
+     </mat-form-field>
+     <mat-form-field>
+      <mat-label>COURSE</mat-label>
+      <input matInput formControlName="title">
+     </mat-form-field><br>
+     <mat-form-field>
+      <mat-label>STATUS</mat-label>
+      <input matInput formControlName="completed">
+     </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+      <button mat-raised-button   type="submit" color="primary">Save</button>
+    <a (click)="close()" mat-raised-button color="warn">Close</a>
+
+</div>
+  </form>  -->

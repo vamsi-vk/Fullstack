@@ -1,0 +1,70 @@
+
+<mat-card>
+  <div>
+    <mat-card-header>
+  <mat-form-field style="margin-left: 5px; width: 20%;"> 
+    <mat-label>search by ID</mat-label>
+    <input matInput (keyup)="Filterchangeid($event)"  />
+  </mat-form-field>
+  <mat-form-field style="margin-left: 5px; width:20%;"> 
+    <mat-label>search by course</mat-label>
+    <input matInput (keyup)="Filterchangecourse($event)"  />
+  </mat-form-field>
+  <mat-form-field style="margin-left: 5px; width: 20%;"> 
+    <mat-label>search by course status</mat-label>
+    <input matInput (keyup)="Filterchangestatus($event)"  />
+  </mat-form-field>
+  <button style="margin-left: 30%;" (click)="addcourse()" mat-raised-button > Add
+    <mat-icon aria-hidden="false" fontIcon="add" ></mat-icon>
+  </button>
+    </mat-card-header>
+  </div>
+    <mat-card-content>
+
+<table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="ID">
+      <th  mat-sort-header mat-header-cell *matHeaderCellDef class="th">ID</th>
+      <td mat-cell *matCellDef="let element">{{element.id}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="course">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>COURSE</th>
+        <td mat-cell *matCellDef="let element">{{element.title}}</td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="status">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Status</th>
+        <td mat-cell *matCellDef="let element">{{element.completed? 'YES' : 'NO'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action</th>
+        <td mat-cell *matCellDef="let element">
+          <span (click)="editcustomer(element.id)"  class=" primary m-2">
+            <mat-icon  class="edit" aria-hidden="false" fontIcon="edit"></mat-icon>
+          </span>
+          <span (click)="delete1(element.id)" class="delete m-2">
+            <mat-icon aria-hidden="false" fontIcon="delete"></mat-icon>
+          </span>
+          
+          <span (click)="details(element.id)" class="info m-2">
+            <mat-icon aria-hidden="false" fontIcon="info"></mat-icon>
+          </span>
+        </td>
+      </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
+
+</table>
+
+</mat-card-content>
+<br>
+<mat-card-footer>
+
+    <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
+
+</mat-card-footer>
+</mat-card>

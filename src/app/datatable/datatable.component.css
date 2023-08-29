@@ -1,0 +1,24 @@
+.m-1 {
+    margin: 0.25rem;
+  }
+  
+  .m-2 {
+    margin: 0.3rem;
+  }
+  th{
+    background-color: rgb(99, 97, 97) !important;
+    color: white;
+}
+span:hover{
+    cursor: pointer;
+}
+.edit{
+    color: rgb(135, 142, 135);
+}
+
+.delete{
+  color:rgb(162, 23, 42);
+}
+.info{
+  color: rgb(1, 84, 2);
+}

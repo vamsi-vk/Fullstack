@@ -1,0 +1,12 @@
+
+<div mat-dialog-content>
+  <ng-container *ngIf="custdata">
+    <h2>Course ID: <b>{{ custdata.id }}</b></h2>
+    <h2>Title: <b>{{ custdata.title }}</b></h2>
+    <h2>Available: <b>{{ custdata.completed ? "Yes" : "No" }}</b></h2>
+  </ng-container>
+  <div mat-dialog-actions>
+    <button (click)="closepopup()" mat-raised-button color="warn">Close</button>
+  </div>
+</div>
+
