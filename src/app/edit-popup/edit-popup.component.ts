@@ -25,8 +25,7 @@ export class EditPopupComponent implements OnInit {
   ngOnInit(): void {
     this.editForm = this.fb.group({
       id: [  this.data.id ],
-      // id: [{ value: this.data.id, disabled: true }],
-      title: [this.data.course],
+      title: [this.data.title],
       completed: [this.data.completed]
     });
   }
@@ -49,9 +48,8 @@ export class EditPopupComponent implements OnInit {
   }
   myform = this.buildr.group({
     id: this.buildr.control(''),
-    course: this.buildr.control(''),
+    title: this.buildr.control(''),
     completed: this.buildr.control(''),
-    status: this.buildr.control(true)
   });
   Saveuser() {
     this.service.Savecustomer(this.myform.value).subscribe(res => {
