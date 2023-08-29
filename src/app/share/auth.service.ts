@@ -68,6 +68,16 @@ this.fireauth.signOut().then(()=>
   alert("error")
 })
 }
+forgetpassword(email:any){
+  console.log(email)
+  this.fireauth.sendPasswordResetEmail(email)
+  .then ( () => {
+    window.alert ('Password reset email sent, check your inbox.');
+    
+    })
+    .catch( (error) => {
+    window.alert (error);});
+}
 
 
 

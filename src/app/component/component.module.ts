@@ -3,8 +3,11 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule2 } from './app-routing.module2';
 
 
+
 @NgModule({
   declarations: [
+
+  
 
   ],
   imports: [

@@ -6,11 +6,13 @@ import { MenubarComponent } from './component/menubar/menubar.component';
 import { DatatableComponent } from './datatable/datatable.component';
 import { MasterService } from './service/master.service';
 import { RegisterComponent } from './component/register/register.component';
+import { ForgetpasswordComponent } from './component/forgetpassword/forgetpassword.component';
 const routes: Routes = [
   {path:'',component:LoginComponent},
   {path:'admin',component: ComponentComponent},
   {path: 'login', component: LoginComponent},
-  {path :'registration', component : RegisterComponent}
+  {path :'registration', component : RegisterComponent},
+  {path: 'forgot-password', component: ForgetpasswordComponent} 
 
   // {path:'**', component:NotfoundpageComponent}
 ];
