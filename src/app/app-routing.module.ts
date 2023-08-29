@@ -6,10 +6,12 @@ import { MenubarComponent } from './component/menubar/menubar.component';
 import { DatatableComponent } from './datatable/datatable.component';
 import { MasterService } from './service/master.service';
 import { RegisterComponent } from './component/register/register.component';
+import { AuthGaurd } from './share/auth.guard';
+import { AuthCanLoadGuard } from './share/auth-canload.guard';
 const routes: Routes = [
-  {path:'',component:LoginComponent},
-  {path:'admin',component: ComponentComponent},
-  {path: 'login', component: LoginComponent},
+  {path:'',redirectTo:'login',pathMatch:'full'},
+  {path:'admin',component: ComponentComponent,canActivate:[AuthGaurd]},
+  {path: 'login', component: LoginComponent,canActivate:[AuthCanLoadGuard]},
   {path :'registration', component : RegisterComponent}
 
   // {path:'**', component:NotfoundpageComponent}

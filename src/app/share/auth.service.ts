@@ -1,4 +1,3 @@
-import { Token } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
@@ -14,6 +13,13 @@ export class AuthService {
 
   constructor(private fireauth : AngularFireAuth, private router : Router, private toast:NgToastService,private ngZone: NgZone) { }
 
+  isLoggedIn() {
+    return !!localStorage.getItem('firebaseToken');
+}
+  signOut(){
+    localStorage.removeItem('token')
+  }
+  
   // async login (email :string , password :string ){
   //     await this.fireauth.signInWithEmailAndPassword(email,password).then((res)=>{
   //     console.log(res)
@@ -27,36 +33,32 @@ export class AuthService {
      
   // }
   async login(email: string, password: string) {
-    await this.fireauth.signInWithEmailAndPassword(email, password).then((res) => {
-      console.log(res);
-      // localStorage.setItem('token', 'true') 
-      this.ngZone.run(() => {
-        this.router.navigate(['/admin']);
-      });
-    }, err => {
-      this.toast.warning({ detail: "vk" });
-      this.ngZone.run(() => {
-        this.router.navigate(['/login']);
-      });
-    });
+    try {
+        const res = await this.fireauth.signInWithEmailAndPassword(email, password);
+        console.log("res:", res);
+        
+        const userTokenResult = await res.user?.getIdTokenResult();
+        console.log("userTokenResult:", userTokenResult?.token);
+        
+        const accessToken = userTokenResult?.token;
 
-
-  }
-
-  // registet 
-
-
-  register(email:string, password:string){
-    this.fireauth.signInWithEmailAndPassword(email,password).then((res:any)=>{
-      alert("Registration Successful")
-     
-      this.router.navigate (['/login' ]);
-
-  },err=>{
-    this.toast.warning({detail:"Failed"})
-    this.router.navigate(['/registation']);
-  })
+        if (accessToken) {
+            localStorage.setItem('firebaseToken', accessToken);
+        }
+        this.ngZone.run(() => {
+            this.router.navigate(['/admin']);
+        });
+        console.log("hi")
+    } catch (error) {
+        console.error("Login error:", error);
+        this.toast.warning({ detail: "Login failed" });
+        this.ngZone.run(() => {
+            this.router.navigate(['/login']);
+        });
+    }
 }
+
+
 //logout 
 
 logout (){
