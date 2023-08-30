@@ -15,8 +15,7 @@ export class MasterService {
 
   constructor(private http: HttpClient, private router: Router) {
     this.headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer your_auth_token_here', // Replace with actual token
+      'Authorization': `Bearer ${sessionStorage.getItem("firebaseToken")}`, // Replace with actual token
     });
   }
 
