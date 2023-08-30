@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { AuthService } from 'src/app/share/auth.service';
 import { MasterService } from 'src/app/service/master.service';
+import { Router } from '@angular/router';
+import { NgZone } from '@angular/core';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -12,7 +15,7 @@ export class RegisterComponent {
   hide1 = true;
   hide2 = true;
 
-  constructor(private fb: FormBuilder, private service: MasterService) {
+  constructor(private fb: FormBuilder, private service: MasterService, private router:Router,  private ngZone: NgZone) {
     this.signupForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), this.passwordComplexityValidator]],
@@ -30,10 +33,16 @@ export class RegisterComponent {
         password: this.signupForm.value.password
       }
       this.service.register(data).subscribe((res: any) => {
-        console.log(res.statusText);
+        if(res.error){
+          alert(res.error)
+        }
+        else{
+          console.log(res)
+          alert(res.message)
+        }
         
       })} else {
-     console.log("errror")
+        // console.log(res.statusText);
     }
   }
   

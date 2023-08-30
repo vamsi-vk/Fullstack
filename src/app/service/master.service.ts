@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { colorentity } from '../Entity/colorentity';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs";
+import { Router } from '@angular/router';
+
+import { Route } from '@angular/router';
 import { Country, Customer } from '../Model/Customer';
 
 @Injectable({
@@ -9,7 +12,7 @@ import { Country, Customer } from '../Model/Customer';
 })
 export class MasterService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,  private router: Router) { }
 
   GetColorList(): colorentity[] {
     return [
@@ -57,8 +60,8 @@ search(key:any):Observable<any>{
 
 
   register(data:any){
-    console.log(data)
     return this.http.post('http://localhost:3000/auth/signup/',data);
+    // this.router.navigate(['/login']);
 
   }
 

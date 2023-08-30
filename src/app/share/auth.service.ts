@@ -45,12 +45,9 @@ export class AuthService {
         password
       );
       console.log('res:', res);
-
       const userTokenResult = await res.user?.getIdTokenResult();
       console.log('userTokenResult:', userTokenResult?.token);
-
       const accessToken = userTokenResult?.token;
-
       if (accessToken) {
         sessionStorage.setItem('firebaseToken', accessToken);
       }
@@ -68,7 +65,6 @@ export class AuthService {
       } else {
         alert(error.message);
       }
-
       this.ngZone.run(() => {
         this.router.navigate(['/login']);
       });
