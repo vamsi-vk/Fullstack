@@ -70,29 +70,15 @@ export class DatatableComponent {
 
   details(code: any) {
     const vk = this.dialog.open(UserdetailComponent, { data: code });
-    console.log('details' + code);
   }
 
-  delete1(id: any) {
-    const del = this.dialog.open(DeletepopupComponent, { data: id });
+  delete1(element:any) {
+    const del = this.dialog.open(DeletepopupComponent, {data:element });
+    del.afterClosed().subscribe((res) => {
+      this.loadcustomer();
+    });
+
   }
-
-  // delete1(data: any) {
-  //   console.log(data);
-  //   this.service.deletecourse(data).subscribe(
-  //     (res: any) => {
-  //       this.toast.success({ detail: 'Successs', summary: res });
-
-  //       this.loadcustomer();
-  //     },
-  //     (err) => {
-  //       this.toast.error({
-  //         detail: 'error',
-  //         summary: 'please enter proper values',
-  //       });
-  //     }
-  //   );
-  // }
 
   addcourse() {
     this.Openpopup(0, 'Add Customer', PopupComponent);
