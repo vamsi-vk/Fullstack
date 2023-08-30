@@ -70,10 +70,13 @@ export class DatatableComponent     {
   }
   
   details(code: any) {
-    const vk = this.dialog.open(UserdetailComponent,{
-      data:code})
+    const vk = this.dialog.open(UserdetailComponent,{data:code})
       console.log("details"+code)
   }
+  // delete(){
+  //   const del = this.dialog.open()
+
+  // }
 
   delete1(data:any){
     console.log(data)
@@ -88,6 +91,26 @@ export class DatatableComponent     {
     }
     );
   }
+  // delete1(data: any) {
+  //   this.confirmationService.confirm({
+  //     message: 'Are you sure you want to delete this item?', // Confirmation message
+  //     accept: () => {
+  //       console.log(data);
+  //       this.service.deletecourse(data).subscribe(
+  //         (res: any) => {
+  //           this.toast.success({ detail: 'Successs', summary: res });
+  //           this.loadcustomer();
+  //         },
+  //         (err) => {
+  //           this.toast.error({
+  //             detail: 'error',
+  //             summary: 'please enter proper values',
+  //           });
+  //         }
+  //       );
+  //     },
+  //   });
+  // }
 
 
   addcourse(){

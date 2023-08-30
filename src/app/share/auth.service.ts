@@ -1,4 +1,3 @@
-import { Token } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
@@ -12,12 +11,23 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 })
 export class AuthService {
 
-  constructor(private fireauth : AngularFireAuth, private router : Router, private toast:NgToastService,private ngZone: NgZone) { }
+  constructor(private fireauth : AngularFireAuth, private router : Router, private toast:NgToastService,private ngZone: NgZone) {
+    // this.toast.success()
+   }
 
+  isLoggedIn() {
+    return !!sessionStorage.getItem('firebaseToken');
+}
+  signOut(){
+    sessionStorage.removeItem('firebaseToken')
+    this.router.navigate(['./login'])
+    
+  }
+  
   // async login (email :string , password :string ){
   //     await this.fireauth.signInWithEmailAndPassword(email,password).then((res)=>{
   //     console.log(res)
-  //     // localStorage.setItem('token','true') 
+  //     // sessionStorage.setItem('token','true') 
   //     this.router.navigate( ['/admin' ]);
   //   },err=>{
   //     this.toast.warning({detail:"vk"})
@@ -27,42 +37,38 @@ export class AuthService {
      
   // }
   async login(email: string, password: string) {
-    await this.fireauth.signInWithEmailAndPassword(email, password).then((res) => {
-      console.log(res);
-      // localStorage.setItem('token', 'true') 
-      this.ngZone.run(() => {
-        this.router.navigate(['/admin']);
-      });
-    }, err => {
-      this.toast.warning({ detail: "vk" });
-      this.ngZone.run(() => {
-        this.router.navigate(['/login']);
-      });
-    });
+    try {
+        const res = await this.fireauth.signInWithEmailAndPassword(email, password);
+        console.log("res:", res);
+        
+        const userTokenResult = await res.user?.getIdTokenResult();
+        console.log("userTokenResult:", userTokenResult?.token);
+        
+        const accessToken = userTokenResult?.token;
 
-
-  }
-
-  // registet 
-
-
-  register(email:string, password:string){
-    this.fireauth.signInWithEmailAndPassword(email,password).then((res:any)=>{
-      alert("Registration Successful")
-     
-      this.router.navigate (['/login' ]);
-
-  },err=>{
-    this.toast.warning({detail:"Failed"})
-    this.router.navigate(['/registation']);
-  })
+        if (accessToken) {
+            sessionStorage.setItem('firebaseToken', accessToken);
+        }
+        this.ngZone.run(() => {
+            this.router.navigate(['/admin']);
+        });
+        console.log("hi")
+    } catch (error) {
+        
+        console.error("Login error:", error);
+        window.alert ('Password reset email sent, check your inbox.');
+        this.ngZone.run(() => {
+            this.router.navigate(['/login']);
+        });
+    }
 }
+
 //logout 
 
 logout (){
 this.fireauth.signOut().then(()=>
 {
-  localStorage.removeItem('token');
+  sessionStorage.removeItem('token');
   this.router.navigate(['./login'])
 },err=>{
   alert("error")

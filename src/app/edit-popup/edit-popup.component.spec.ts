@@ -8,7 +8,7 @@ describe('EditPopupComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [EditPopupComponent]
+      declarations: [EditPopupComponent],
     });
     fixture = TestBed.createComponent(EditPopupComponent);
     component = fixture.componentInstance;

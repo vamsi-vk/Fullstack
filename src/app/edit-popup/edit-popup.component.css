@@ -1,5 +1,4 @@
-
-mat-card{
+mat-card {
   margin: 2%;
   text-align: left;
 }
@@ -9,11 +8,11 @@ mat-card{
   margin: 1%;
 }
 
-.mat-50{
+.mat-50 {
   width: 48%;
   margin: 1%;
 }
 
-button{
+button {
   margin: 2px;
 }
