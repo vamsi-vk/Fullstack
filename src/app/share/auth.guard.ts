@@ -14,6 +14,7 @@ export class AuthGaurd implements CanActivate{
   
   canActivate(): boolean {
     if (this.auth.isLoggedIn()) {
+      
         return true;
     }
     this.router.navigate(['login']); // Redirect unauthenticated users to login page
