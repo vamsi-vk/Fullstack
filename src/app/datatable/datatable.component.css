@@ -6,19 +6,19 @@
     margin: 0.3rem;
   }
   th{
-    background-color: rgb(99, 97, 97) !important;
+    background-color: rgb(19, 37, 58) !important;
     color: white;
 }
 span:hover{
     cursor: pointer;
 }
 .edit{
-    color: rgb(135, 142, 135);
+    color: rgb(27, 28, 27);
 }
 
 .delete{
-  color:rgb(162, 23, 42);
+  color:rgb(176, 24, 15);
 }
 .info{
-  color: rgb(1, 84, 2);
+  color: rgb(103, 170, 105);
 }

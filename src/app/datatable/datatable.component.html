@@ -1,19 +1,19 @@
 <mat-card>
   <div>
     <mat-card-header>
-      <mat-form-field style="margin-left: 5px; width: 20%">
-        <mat-label>search by ID</mat-label>
+      <mat-form-field style="margin-left: 5px; width: 20% ; border-radius: 25px;">
+        <mat-label>Search by ID</mat-label>
         <input matInput (keyup)="Filterchangeid($event)" />
       </mat-form-field>
       <mat-form-field style="margin-left: 5px; width: 20%">
-        <mat-label>search by course</mat-label>
+        <mat-label>Search by course</mat-label>
         <input matInput (keyup)="Filterchangecourse($event)" />
       </mat-form-field>
       <mat-form-field style="margin-left: 5px; width: 20%">
-        <mat-label>search by course status</mat-label>
+        <mat-label>Search by course status</mat-label>
         <input matInput (keyup)="Filterchangestatus($event)" />
       </mat-form-field>
-      <button style="margin-left: 30%" (click)="addcourse()" mat-raised-button>
+      <button style="margin-left: 30%; color: white; background-color: rgb(19, 37, 58)"  (click)="addcourse()" mat-raised-button>
         Add
         <mat-icon aria-hidden="false" fontIcon="add"></mat-icon>
       </button>
@@ -48,7 +48,7 @@
               fontIcon="edit"
             ></mat-icon>
           </span>
-           <span (click)="delete1(element.id)" class="delete m-2">
+           <span (click)="delete1(element.id)"  class="delete m-2">
             <!-- (click)="openDialog('0ms', '0ms')" -->
             <mat-icon aria-hidden="false" fontIcon="delete"></mat-icon>
           </span>

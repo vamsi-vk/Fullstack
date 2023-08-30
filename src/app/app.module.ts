@@ -14,6 +14,7 @@ import { MenubarComponent } from './component/menubar/menubar.component';
 import { HomeComponent } from './component/home/home.component';
 import { CardComponent } from './component/card/card.component';
 import { TableComponent } from './component/table/table.component';
+import { DeletepopupComponent } from './component/deletepopup/deletepopup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormdesignComponent } from './component/formdesign/formdesign.component';
 import { PopupComponent } from './component/popup/popup.component';
@@ -55,6 +56,7 @@ import { ForgetpasswordComponent } from './component/forgetpassword/forgetpasswo
     AdminComponent,
     ComponentComponent,
     ForgetpasswordComponent,
+    DeletepopupComponent
 
     
   ],

@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/share/auth.service';
 })
 export class MenubarComponent {
   constructor(private auth : AuthService){}
-  badgevisible = false;
+  badgevisible = true;
   badgevisibility() {
     this.badgevisible = true;
   }

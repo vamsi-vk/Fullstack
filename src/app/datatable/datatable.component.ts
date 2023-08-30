@@ -9,6 +9,7 @@ import { MasterService } from 'src/app/service/master.service';
 import { EditPopupComponent } from '../edit-popup/edit-popup.component';
 import { UserdetailComponent } from '../component/userdetail/userdetail.component';
 import { PopupComponent } from '../component/popup/popup.component';
+import { DeletepopupComponent } from '../component/deletepopup/deletepopup.component';
 @Component({
   selector: 'app-datatable',
   templateUrl: './datatable.component.html',
@@ -71,27 +72,27 @@ export class DatatableComponent {
     const vk = this.dialog.open(UserdetailComponent, { data: code });
     console.log('details' + code);
   }
-  // delete(){
-  //   const del = this.dialog.open()
 
-  // }
-
-  delete1(data: any) {
-    console.log(data);
-    this.service.deletecourse(data).subscribe(
-      (res: any) => {
-        this.toast.success({ detail: 'Successs', summary: res });
-
-        this.loadcustomer();
-      },
-      (err) => {
-        this.toast.error({
-          detail: 'error',
-          summary: 'please enter proper values',
-        });
-      }
-    );
+  delete1(id: any) {
+    const del = this.dialog.open(DeletepopupComponent, { data: id });
   }
+
+  // delete1(data: any) {
+  //   console.log(data);
+  //   this.service.deletecourse(data).subscribe(
+  //     (res: any) => {
+  //       this.toast.success({ detail: 'Successs', summary: res });
+
+  //       this.loadcustomer();
+  //     },
+  //     (err) => {
+  //       this.toast.error({
+  //         detail: 'error',
+  //         summary: 'please enter proper values',
+  //       });
+  //     }
+  //   );
+  // }
 
   addcourse() {
     this.Openpopup(0, 'Add Customer', PopupComponent);
