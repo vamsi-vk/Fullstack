@@ -47,8 +47,9 @@ mat-card {
       text-decoration: none;
     }
     .content-body{
-      min-height: 100%;
+      min-height:84.2%;
       padding: 60px 1rem;
-      background: transparent;
-      display: block;
+      background: url("src\background.jpg");
+        display: block;
+        
   }
