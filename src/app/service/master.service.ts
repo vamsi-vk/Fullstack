@@ -1,7 +1,4 @@
 import { Injectable } from '@angular/core';
-import { colorentity } from '../Entity/colorentity';
-
-import { Route } from '@angular/router';
 import { Country, Customer } from '../Model/Customer';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -15,7 +12,7 @@ export class MasterService {
 
   constructor(private http: HttpClient, private router: Router) {
     this.headers = new HttpHeaders({
-      'Authorization': `Bearer ${sessionStorage.getItem("firebaseToken")}`, // Replace with actual token
+      Authorization: `Bearer ${sessionStorage.getItem('firebaseToken')}`,
     });
   }
 
@@ -107,6 +104,4 @@ export class MasterService {
       headers: this.headers,
     });
   }
-
-  // ... Other methods using this.headers
 }

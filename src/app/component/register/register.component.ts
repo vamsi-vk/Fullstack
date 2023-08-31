@@ -14,7 +14,6 @@ export class RegisterComponent {
   signupForm: FormGroup;
   hide1 = true;
   hide2 = true;
-
   constructor(private fb: FormBuilder, private service: MasterService, private router:Router,  private ngZone: NgZone) {
     this.signupForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -40,24 +39,19 @@ export class RegisterComponent {
           console.log(res)
           alert(res.message)
         }
-        
       })} else {
         // console.log(res.statusText);
     }
   }
-  
-
   passwordMatchValidator(control: AbstractControl): { [key: string]: boolean } | null {
     const password = control.get('password');
     const cpassword = control.get('cpassword');
   
-    if (password && cpassword && password.value !== '' && password.value !== cpassword.value) {
+    if (password && cpassword && password.value ! == '' && password.value !== cpassword.value) {
       return { passwordMismatch: true };
     }
     return null;
   }
-  
-  
 
   passwordComplexityValidator(control: AbstractControl): { [key: string]: boolean } | null {
     const value = control.value;
