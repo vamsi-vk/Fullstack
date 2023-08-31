@@ -24,7 +24,7 @@ export class RegisterComponent {
 
   ngOnInit(): void {}
 
-  onLogin() {
+  onRegister() {
     if (this.signupForm.valid) {
       // this.service.
       let data = {
@@ -37,9 +37,11 @@ export class RegisterComponent {
         }
         else{
           console.log(res)
+          this.router.navigate(['login'])
           alert(res.message)
         }
       })} else {
+
         // console.log(res.statusText);
     }
   }
@@ -64,7 +66,5 @@ export class RegisterComponent {
     }
     return null;
   }
-  register(){
-
-  }
+  
 }
