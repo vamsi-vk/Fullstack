@@ -10,7 +10,7 @@ import {NgToastService} from 'ng-angular-popup'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  hide: boolean = false;
+  hide: boolean = true;
  
 
   constructor(private fb: FormBuilder, private auth : AuthService,  private toast :NgToastService, ) {
