@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/share/auth.service';
 import { MasterService } from 'src/app/service/master.service';
 import { Router } from '@angular/router';
 import { NgZone } from '@angular/core';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,7 @@ export class RegisterComponent {
   signupForm: FormGroup;
   hide1 = true;
   hide2 = true;
-  constructor(private fb: FormBuilder, private service: MasterService, private router:Router,  private ngZone: NgZone) {
+  constructor(private fb: FormBuilder, private service: MasterService, private router:Router,  private ngZone: NgZone,private toast: NgToastService,) {
     this.signupForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), this.passwordComplexityValidator]],
@@ -33,12 +34,20 @@ export class RegisterComponent {
       }
       this.service.register(data).subscribe((res: any) => {
         if(res.error){
-          alert(res.error)
+          this.toast.error({ detail: 'Error occured', summary: res.error });
+
+          
         }
         else{
           console.log(res)
-          this.router.navigate(['login'])
-          alert(res.message)
+          this.toast.success({ detail: "Success", summary: res.message });
+          setTimeout(() => {
+            this.ngZone.run(() => {
+              this.router.navigate(['login']);
+            });
+          }, 2000);
+          
+
         }
       })} else {
 
