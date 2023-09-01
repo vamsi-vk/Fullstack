@@ -15,7 +15,7 @@ import { HomeComponent } from './component/home/home.component';
 import { CardComponent } from './component/card/card.component';
 import { TableComponent } from './component/table/table.component';
 import { DeletepopupComponent } from './component/deletepopup/deletepopup.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormdesignComponent } from './component/formdesign/formdesign.component';
 import { PopupComponent } from './component/popup/popup.component';
 import { AssociateComponent } from './component/associate/associate.component';
@@ -32,6 +32,7 @@ import { ComponentComponent } from './component/component.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ForgetpasswordComponent } from './component/forgetpassword/forgetpassword.component';
+import { AuthInterceptor } from './share/auth.interceptor';
 
 
 
@@ -85,7 +86,12 @@ import { ForgetpasswordComponent } from './component/forgetpassword/forgetpasswo
    
 
   ],
-  providers: [NgToastService],
+  providers: [NgToastService,
+  {
+    provide:HTTP_INTERCEPTORS,
+    useClass:AuthInterceptor,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
