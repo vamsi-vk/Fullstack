@@ -1,0 +1,9 @@
+
+<h1 mat-dialog-title>Delete Course</h1>
+<div mat-dialog-content>
+  Would you like to delete course : <b>{{data.title}}</b>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close cdkFocusInitial  (click)="onCancel()" color="warn">No</button>
+  <button mat-button  mat-dialog-close color="primary" (click)="onDelete()" >Yes</button>
+</div>

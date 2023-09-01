@@ -1,0 +1,40 @@
+.m-1 {
+    margin: 0.25rem;
+  }
+  
+  .m-2 {
+    margin: 0.3rem;
+  }
+  th{
+    background-image: linear-gradient( rgb(34, 23, 48), rgb(19, 3, 41)) !important;
+    color: white;
+}
+span:hover{
+    cursor: pointer;
+}
+.edit{
+    color: rgb(27, 28, 27);
+}
+
+.delete{
+  color:rgb(176, 24, 15);
+}
+.info{
+  color: rgb(103, 170, 105);
+}
+
+.sticky-header-container {
+  position: sticky;
+  top: 0;
+  background-color: white; 
+  z-index: 2; 
+}
+
+/* .table-container {
+  overflow: auto;
+  max-height: calc(100vh - 150px); 
+} */
+
+.custom-mat-form-field {
+  border-radius: 25px;
+}

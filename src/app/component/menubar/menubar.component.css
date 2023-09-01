@@ -1,0 +1,17 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+.profile-icon {
+  font-size: 25px; 
+  color: #007bff; 
+
+}
+
+.mat-tooltip {
+  background-color: #174577; 
+  color: #fff; 
+  font-size: 16px; 
+  border-radius: 4px; 
+  padding: 8px 12px; 
+
+}
